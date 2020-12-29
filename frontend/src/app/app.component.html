@@ -2,16 +2,30 @@
   <div fxLayout="column" fxFlex>
     <mat-card fxLayout="column" fxFlex="100">
       <mat-card class="padding-div" fxLayout="row">
-        Capitulo 1: Início
+        <div fxLayout="row" fxFlex fxLayoutAlign="start center">
+          Capitulo 1: Início
+        </div>
+        <div fxLayout="row" fxFlex="80" fxLayoutAlign="end center">
+          <mat-icon class="icon-drag" cdkDragHandle>height</mat-icon>
+          <button mat-icon-button>
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
       </mat-card>
       <br>
       <div>
         <mat-accordion class="example-headers-align" #accordion multi>
           <mat-expansion-panel [expanded]="cidades.length > 0">
             <mat-expansion-panel-header>
-              <mat-panel-title>
+              <mat-panel-title fxLayoutAlign="start center">
                 Cidade
               </mat-panel-title>
+              <mat-panel-description fxLayoutAlign="end center">
+                <mat-icon class="icon-drag" cdkDragHandle>height</mat-icon>
+                <button mat-icon-button>
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </mat-panel-description>
             </mat-expansion-panel-header>
             <div fxLayout="column" cdkDropList class="example-list" (cdkDropListDropped)="dropItem(cidades, $event)">
               <div fxLayout="row" class="example-box example-margin" *ngFor="let item of cidades" cdkDrag>
@@ -19,6 +33,12 @@
                   {{item.nome}}
                 </div>
                 <div fxLayout="row" fxFlex="80" fxLayoutAlign="end center">
+                  <button mat-icon-button>
+                    <mat-icon>more_horiz</mat-icon>
+                  </button>
+                  <button mat-icon-button>
+                    <mat-icon>code</mat-icon>
+                  </button>
                   <mat-icon class="icon-drag" cdkDragHandle>height</mat-icon>
                   <button mat-icon-button>
                     <mat-icon (click)="deleteCidade(item.value)">delete</mat-icon>
@@ -40,9 +60,15 @@
           </mat-expansion-panel>
           <mat-expansion-panel [expanded]="sexos.length > 0">
             <mat-expansion-panel-header>
-              <mat-panel-title>
+              <mat-panel-title fxLayoutAlign="start center">
                 Sexo
               </mat-panel-title>
+              <mat-panel-description fxLayoutAlign="end center">
+                <mat-icon class="icon-drag" cdkDragHandle>height</mat-icon>
+                <button mat-icon-button>
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </mat-panel-description>
             </mat-expansion-panel-header>
             <div fxLayout="column" cdkDropList class="example-list" (cdkDropListDropped)="dropItem(sexos, $event)">
               <div fxLayout="row" class="example-box example-margin" *ngFor="let item of sexos" cdkDrag>
@@ -50,6 +76,12 @@
                   {{item.nome}}
                 </div>
                 <div fxLayout="row" fxFlex="80" fxLayoutAlign="end center">
+                  <button mat-icon-button>
+                    <mat-icon>more_horiz</mat-icon>
+                  </button>
+                  <button mat-icon-button>
+                    <mat-icon>code</mat-icon>
+                  </button>
                   <mat-icon class="icon-drag" cdkDragHandle>height</mat-icon>
                   <button mat-icon-button>
                     <mat-icon (click)="deleteSexo(item.value)">delete</mat-icon>
@@ -71,9 +103,15 @@
           </mat-expansion-panel>
           <mat-expansion-panel [expanded]="marcas.length > 0">
             <mat-expansion-panel-header>
-              <mat-panel-title>
+              <mat-panel-title fxLayoutAlign="start center">
                 Cite as duas principais marcas
               </mat-panel-title>
+              <mat-panel-description fxLayoutAlign="end center">
+                <mat-icon class="icon-drag" cdkDragHandle>height</mat-icon>
+                <button mat-icon-button>
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </mat-panel-description>
             </mat-expansion-panel-header>
             <div fxLayout="column" cdkDropList class="example-list" (cdkDropListDropped)="dropItem(marcas, $event)">
               <div fxLayout="row" class="example-box example-margin" *ngFor="let item of marcas" cdkDrag>
@@ -82,6 +120,12 @@
                   {{item.nome}}
                 </mat-checkbox>
                 <div fxLayout="row" fxFlex="80" fxLayoutAlign="end center">
+                  <button mat-icon-button>
+                    <mat-icon>more_horiz</mat-icon>
+                  </button>
+                  <button mat-icon-button>
+                    <mat-icon>code</mat-icon>
+                  </button>
                   <mat-icon class="icon-drag" cdkDragHandle>height</mat-icon>
                   <button mat-icon-button>
                     <mat-icon (click)="deleteMarca(item.value)">delete</mat-icon>
@@ -112,9 +156,15 @@
         <mat-accordion class="example-headers-align" #accordion multi>
           <mat-expansion-panel [expanded]="marcasFavoritas.length > 0">
             <mat-expansion-panel-header>
-              <mat-panel-title>
+              <mat-panel-title fxLayoutAlign="start center">
                 Quais marcas você mais gosta?
               </mat-panel-title>
+              <mat-panel-description fxLayoutAlign="end center">
+                <mat-icon class="icon-drag" cdkDragHandle>height</mat-icon>
+                <button mat-icon-button>
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </mat-panel-description>
             </mat-expansion-panel-header>
             <div fxLayout="column" cdkDropList class="example-list"
               (cdkDropListDropped)="dropItem(marcasFavoritas, $event)">
@@ -123,14 +173,33 @@
                   (click)="setMarcaFavorita(item.value, item.favorita)" fxFlex>
                   {{item.nome}}
                 </mat-checkbox>
+                <div fxLayout="row" fxFlex="80" fxLayoutAlign="end center">
+                  <button mat-icon-button>
+                    <mat-icon>more_horiz</mat-icon>
+                  </button>
+                  <button mat-icon-button>
+                    <mat-icon>code</mat-icon>
+                  </button>
+                  <mat-icon class="icon-drag" cdkDragHandle>height</mat-icon>
+                </div>
               </div>
             </div>
           </mat-expansion-panel>
         </mat-accordion>
       </div>
       <br>
-      <mat-card>
-        Qual sua idade?
+      <mat-card fxLayout="column">
+        <div fxLayout="row">
+          <div fxLayout="row" fxFlex fxLayoutAlign="start center">
+            Qual sua idade?
+          </div>
+          <div fxLayout="row" fxFlex="80" fxLayoutAlign="end center">
+            <mat-icon class="icon-drag" cdkDragHandle>height</mat-icon>
+            <button mat-icon-button>
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
         <div fxLayout="row" fxLayoutGap="10px">
           <div fxLayout="row" fxLayoutAlign="start center">
             <button color="primary" mat-raised-button>Adicionar</button>

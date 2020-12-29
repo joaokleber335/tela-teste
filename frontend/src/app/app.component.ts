@@ -76,7 +76,6 @@ export class AppComponent implements OnInit {
   }
 
   public async getCidades() {
-    debugger;
     const res = await this.cidadeService.getAllCidades();
     if (res && res.result.length > 0) {
       this.cidades = [];

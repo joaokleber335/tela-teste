@@ -1,0 +1,14 @@
+{
+    "name": "joao/backendteste",
+    "authors": [
+        {
+            "name": "João Kleber Gonçalves Setubal",
+            "email": "52508401+joaokleber335@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "slim/slim": "~2.0",
+        "emalherbi/mymysql": "^1.0",
+        "palanik/corsslim": "^1.1"
+    }
+}

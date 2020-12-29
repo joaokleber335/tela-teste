@@ -1,0 +1,239 @@
+<div fxLayout="row wrap" fxFlex="100" fxLayoutGap="10px">
+  <div fxLayout="column" fxFlex>
+    <mat-card fxLayout="column" fxFlex="100">
+      <mat-card class="padding-div" fxLayout="row">
+        Capitulo 1: Início
+      </mat-card>
+      <br>
+      <div>
+        <mat-accordion class="example-headers-align" #accordion multi>
+          <mat-expansion-panel [expanded]="cidades.length > 0">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Cidade
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div fxLayout="column" cdkDropList class="example-list" (cdkDropListDropped)="dropItem(cidades, $event)">
+              <div fxLayout="row" class="example-box example-margin" *ngFor="let item of cidades" cdkDrag>
+                <div fxLayout="row" fxFlex>
+                  {{item.nome}}
+                </div>
+                <div fxLayout="row" fxFlex="80" fxLayoutAlign="end center">
+                  <mat-icon class="icon-drag" cdkDragHandle>height</mat-icon>
+                  <button mat-icon-button>
+                    <mat-icon (click)="deleteCidade(item.value)">delete</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayoutGap="10px">
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <button color="primary" mat-raised-button (click)="postCidade()">Adicionar</button>
+              </div>
+              <div fxLayout="row" fxFlex="90">
+                <mat-form-field fxFlex="40">
+                  <mat-label>Nome da cidade</mat-label>
+                  <input matInput [formControl]="nomeCidade" placeholder="Ex. Rio de Janeiro">
+                </mat-form-field>
+              </div>
+            </div>
+          </mat-expansion-panel>
+          <mat-expansion-panel [expanded]="sexos.length > 0">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Sexo
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div fxLayout="column" cdkDropList class="example-list" (cdkDropListDropped)="dropItem(sexos, $event)">
+              <div fxLayout="row" class="example-box example-margin" *ngFor="let item of sexos" cdkDrag>
+                <div fxLayout="row" fxFlex>
+                  {{item.nome}}
+                </div>
+                <div fxLayout="row" fxFlex="80" fxLayoutAlign="end center">
+                  <mat-icon class="icon-drag" cdkDragHandle>height</mat-icon>
+                  <button mat-icon-button>
+                    <mat-icon (click)="deleteSexo(item.value)">delete</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayoutGap="10px">
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <button color="primary" mat-raised-button (click)="postSexo()">Adicionar</button>
+              </div>
+              <div fxLayout="row" fxFlex="90">
+                <mat-form-field fxFlex="40">
+                  <mat-label>Sexo</mat-label>
+                  <input matInput [formControl]="sexo" placeholder="Ex. Masculino">
+                </mat-form-field>
+              </div>
+            </div>
+          </mat-expansion-panel>
+          <mat-expansion-panel [expanded]="marcas.length > 0">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Cite as duas principais marcas
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div fxLayout="column" cdkDropList class="example-list" (cdkDropListDropped)="dropItem(marcas, $event)">
+              <div fxLayout="row" class="example-box example-margin" *ngFor="let item of marcas" cdkDrag>
+                <mat-checkbox color="primary" [checked]="item.principal"
+                  (click)="setMarcaPrincipal(item.value, item.principal)" fxFlex>
+                  {{item.nome}}
+                </mat-checkbox>
+                <div fxLayout="row" fxFlex="80" fxLayoutAlign="end center">
+                  <mat-icon class="icon-drag" cdkDragHandle>height</mat-icon>
+                  <button mat-icon-button>
+                    <mat-icon (click)="deleteMarca(item.value)">delete</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayoutGap="10px">
+              <div fxLayout="row" fxLayoutAlign="start center">
+                <button color="primary" mat-raised-button (click)="postMarca()">Adicionar</button>
+              </div>
+              <div fxLayout="row" fxFlex="90">
+                <mat-form-field fxFlex="40">
+                  <mat-label>Marca</mat-label>
+                  <input matInput [formControl]="marca" placeholder="Ex. Coca cola">
+                </mat-form-field>
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+      <br>
+      <mat-card class="padding-div" fxLayout="row">
+        Capitulo 2: Principal
+      </mat-card>
+      <br>
+      <div>
+        <mat-accordion class="example-headers-align" #accordion multi>
+          <mat-expansion-panel [expanded]="marcasFavoritas.length > 0">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Quais marcas você mais gosta?
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div fxLayout="column" cdkDropList class="example-list"
+              (cdkDropListDropped)="dropItem(marcasFavoritas, $event)">
+              <div fxLayout="row" class="example-box example-margin" *ngFor="let item of marcasFavoritas" cdkDrag>
+                <mat-checkbox color="primary" [checked]="item.favorita"
+                  (click)="setMarcaFavorita(item.value, item.favorita)" fxFlex>
+                  {{item.nome}}
+                </mat-checkbox>
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+      <br>
+      <mat-card>
+        Qual sua idade?
+        <div fxLayout="row" fxLayoutGap="10px">
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <button color="primary" mat-raised-button>Adicionar</button>
+          </div>
+          <div fxLayout="row" fxFlex="90">
+            <mat-form-field fxFlex="40">
+              <mat-label>Idade</mat-label>
+              <input matInput placeholder="Ex. 18">
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card>
+    </mat-card>
+  </div>
+
+
+  <div fxLayout="column" fxFlex="25">
+    <mat-card fxLayout="column">
+      <mat-form-field appearance="outline" fxFlex>
+        <mat-label>Tipo da pergunta</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let tipo of tipoPerguntas" [value]="tipo.value">{{tipo.nome}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" fxFlex>
+        <mat-label>Estrutura da pergunta</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let estrutura of estruturaPerguntas" [value]="estrutura.value">{{estrutura.nome}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div fxLayout="row" fxLayoutGap="10px">
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label>Regra de aplicação</mat-label>
+          <input matInput>
+        </mat-form-field>
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <button color="primary" mat-raised-button>Adicionar</button>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutGap="10px">
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label>Regra de filtro</mat-label>
+          <input matInput>
+        </mat-form-field>
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <button color="primary" mat-raised-button>Adicionar</button>
+        </div>
+      </div>
+      <div fxLayout="column">
+        <b>Range</b>
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+          <mat-form-field appearance="outline" fxFlex="25">
+            <input matInput>
+          </mat-form-field>
+          <p>à</p>
+          <mat-form-field appearance="outline" fxFlex="25">
+            <input matInput>
+          </mat-form-field>
+        </div>
+      </div>
+      <div fxLayout="column">
+        <b>Limite de caracteres</b>
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+          <mat-form-field appearance="outline" fxFlex="25">
+            <input matInput>
+          </mat-form-field>
+          <b>.</b>
+          <mat-form-field appearance="outline" fxFlex="25">
+            <input matInput>
+          </mat-form-field>
+        </div>
+      </div>
+      <div>
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label>Números válidos</mat-label>
+          <input matInput>
+        </mat-form-field>
+      </div>
+      <div fxLayout="column">
+        <p>Rodiziar</p>
+        <mat-checkbox color="primary" *ngFor="let item of listRodizio" [value]="item.value">
+          {{item.nome}}
+        </mat-checkbox>
+      </div>
+      <div fxLayout="column">
+        <p>Loop</p>
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label>Break</mat-label>
+          <input matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label>Voltas definidas</mat-label>
+          <input matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label>Interação com perguntas</mat-label>
+          <mat-select multiple>
+            <mat-option *ngFor="let pergunta of perguntas" [value]="pergunta.value">{{pergunta.nome}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </mat-card>
+  </div>
+</div>
